@@ -1,5 +1,3 @@
-/* g++ List.cpp main.cpp -Wall -Wextra -Werror -std=c++11 -pedantic -o List.exe */
-
 #include "List.h"
 #include <iostream>
 
@@ -523,79 +521,52 @@ void RunTest(void(*pf)(), const char * function_name)
     std::cout << std::endl;
 }
 
-int main(void)
+int main(int argc, char *argv[])
 {
-#if 0
-    RunTest(TestCopyConstructor1, "TestCopyConstructor1");
-#endif
-
-#if 0
-    RunTest(TestCopyConstructor2, "TestCopyConstructor2");
-#endif
-
-#if 0
-    RunTest(TestArray1, "TestArray1");
-#endif
-
-#if 0
-    RunTest(TestArray2, "TestArray2");
-#endif
-  
-#if 1
-    RunTest(TestPushFront, "TestPushFront");
-#endif
-
-#if 0
-    RunTest(TestPushBack, "TestPushBack");
-#endif
-
-#if 0
-    RunTest(TestPushFrontBack, "TestPushFrontBack");
-#endif
-    
-#if 0
-    RunTest(TestPopFront, "TestPopFront");
-#endif
-
-#if 0
-    RunTest(TestRemoveNode, "TestRemoveNode");
-#endif
-   
-#if 0
-    RunTest(TestInsertNodeAt, "TestInsertNodeAt");
-#endif
-
-#if 0
-    RunTest(TestAssignment1, "TestAssignment1");
-#endif
-
-#if 0
-    RunTest(TestAssignment2, "TestAssignment2");
-#endif
-
-#if 0
-    RunTest(TestAddition1, "TestAddition1");
-#endif
-
-#if 0
-    RunTest(TestAddition2, "TestAddition2");
-#endif
-
-#if 0
-    RunTest(TestAddAssign1, "TestAddAssign1");
-#endif
-
-#if 0
-    RunTest(TestAddAssign2, "TestAddAssign2");
-#endif
-
-#if 0
-    RunTest(TestAddAssign3, "TestAddAssign3");
-#endif
-
-#if 0
-    RunTest(TestAddAssign4, "TestAddAssign4");
-#endif
+	struct Test
+	{
+		void(*pf)();
+		const char* name;
+	};
+	
+	Test tests[] =
+	{
+		{ TestPushFront, "TestPushFront" },
+		{ TestPushBack, "TestPushBack" },
+		{ TestPushFrontBack, "TestPushFrontBack" },
+		{ TestPopFront, "TestPopFront" },
+		{ TestPopFront, "TestPopBack" },
+		{ TestCopyConstructor1, "TestCopyConstructor1" },
+		{ TestCopyConstructor2, "TestCopyConstructor2" },
+		{ TestArray1, "TestArray1" },
+		{ TestArray2, "TestArray2" },
+		{ TestAssignment1, "TestAssignment1" },
+		{ TestAssignment2, "TestAssignment2" },
+		{ TestAddition1, "TestAddition1" },
+		{ TestAddition2, "TestAddition2" },
+		{ TestAddAssign1, "TestAddAssign1" },
+		{ TestAddAssign2, "TestAddAssign2" },
+		{ TestAddAssign3, "TestAddAssign3" },
+		{ TestAddAssign4, "TestAddAssign4" },
+		{ TestRemoveNode, "TestRemoveNode" },
+		{ TestInsertNodeAt, "TestInsertNodeAt" },
+	};
+	
+	int testNum = atoi(argv[1]);
+	
+	// Run all tests
+	if(testNum == 0 || argc == 0)
+	{
+		unsigned numTests = sizeof(tests) / sizeof(Test);
+		for(unsigned i = 0; i < numTests; ++i)
+			RunTest(tests[i].pf, tests[i].name);
+	}
+	// Run specific test
+	else if(testNum > 0)
+	{
+		RunTest(tests[testNum - 1].pf, tests[testNum - 1].name);
+	}
+	// Do nothing if test number is negative
 
     return 0;
 }
