@@ -1,3 +1,5 @@
+/* g++ List.cpp main.cpp -Wall -Wextra -Werror -std=c++11 -pedantic -o List.exe */
+
 #include "List.h"
 #include <iostream>
 
