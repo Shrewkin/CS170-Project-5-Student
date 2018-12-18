@@ -16,25 +16,33 @@ namespace CS175
 	// Copy constructor for constructing a list from an existing list
 	List::List(const int *array, int size)
 	{
-		
+		int arr[] = new arr[size]
+		for (int i = 0; i <= size; i++)
+		{
+			arr[i] = array[i];
+		}
+		return arr[];
 	}
 	
 	// Destructor
 	List::~List()
 	{
-		
+		clear();
 	}
 	
 	// Adds the item to the front of the list
 	void List::push_front(int value_)
 	{
-		
+		Node* newNode = new_node(value_);
+		newNode->head = head;
+		head = newNode;
 	}
 	
 	// Adds the item to the end of the list
 	void List::push_back(int value_)
 	{
-		
+		Node* newNode = new_node(value_);
+		tail = newNode;
 	}
 	
 	// removes the first item in the list
@@ -52,12 +60,14 @@ namespace CS175
 	// removes the first node it finds with the user defined value
 	void List::remove_node_by_value(int value_)
 	{
+		Node* newNode = new_node(value_);
 		
 	}
 	
 	// Inserts a new node in the lost. The node will be inserted at the user defined location and will have the user defined value
 	void List::insert_node_at(int location_, int value_)
 	{
+		Node* newNode = new_node(value_);
 		
 	}
 	
@@ -82,7 +92,7 @@ namespace CS175
 	// returns the number of items in the list
 	int List::list_size() const
 	{
-		
+		return list;
 	}
 	
 	// returns true if empty, else false
@@ -114,7 +124,12 @@ namespace CS175
     }
 	
 	// constructor
-	List::Node::Node(int);
+	List::Node::Node(int)
+		: data(1)
+		, next(nullptr)
+	{
+		Node::nodes_alive++;
+	}
     
 	// Destructor
 	List::Node::~Node()
