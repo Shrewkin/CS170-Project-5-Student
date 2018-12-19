@@ -1,18 +1,18 @@
-TestPopFront...
+TestPopBack...
    5   4   3   2   1
-First item was: 5
-New list:   4   3   2   1
+Last item was: 1
+New list:   5   4   3   2
 Items in the list: 4
-First item was: 4
-New list:   3   2   1
+Last item was: 2
+New list:   5   4   3
 Items in the list: 3
-First item was: 3
-New list:   2   1
+Last item was: 3
+New list:   5   4
 Items in the list: 2
-First item was: 2
-New list:   1
+Last item was: 4
+New list:   5
 Items in the list: 1
-First item was: 1
+Last item was: 5
 New list:
 Items in the list: 0
 

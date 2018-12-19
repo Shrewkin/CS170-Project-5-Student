@@ -8,20 +8,30 @@ namespace CS175
 	List::List()
 		: head(nullptr)
 		, tail(nullptr)
+		, size(0)
 	{
 		list++;
 		Node::nodes_alive++;
 	}
 	
-	// Copy constructor for constructing a list from an existing list
-	List::List(const int *array, int size)
+	// Copy contructor for constructing a list from an existing list
+    List::List(const List &list)
+		: head(nullptr)
+		, tail(nullptr)
+		, size(0)
 	{
-		int arr[] = new arr[size]
-		for (int i = 0; i <= size; i++)
-		{
-			arr[i] = array[i];
-		}
-		return arr[];
+		size = list.size;
+		Node* current = list.head->next;
+		
+	}
+
+    // Contruct a list from an integer array
+    List::List(const int *array, int size)
+		: head(nullptr)
+		, tail(nullptr)
+		, size(0)
+	{
+		
 	}
 	
 	// Destructor
@@ -48,27 +58,57 @@ namespace CS175
 	// removes the first item in the list
 	int List::pop_front()
 	{
-		
+		Node* newHead = head->next;
+		int returnValue = head->data;
+		delete head;
+		head = new Head;
+		size--;
+		return retVal
 	}
 	
 	// removes the last item in the list
 	int List::pop_back()
 	{
-		
+		if (empty())
+			return -1;
+		Node* secondToLast;
+		Node* current = head;
+		while (current->next != tail && current->next != nullptr)
+			current = current->next;
+		secondToLast = current;
+		int returnValue = tail->data;
+		secondToLast->next = NULL;
+		delete tail;
+		size--;
+		return returnValue;
 	}
 	
 	// removes the first node it finds with the user defined value
 	void List::remove_node_by_value(int value_)
 	{
-		Node* newNode = new_node(value_);
-		
+		Node* last = nullptr;
+		Node* current = head;
+		Node* nextNode = head->next;
+		for (int i = 0; i <= size; i++)
+		{
+			if (current->data == value_)
+			{
+				Node* temp = current->next;
+				delete current;
+				list->next = temp;
+				size--;
+				return;
+			}
+			last = current;
+			current = nextNode;
+			nextNode = nextNode->next;
+		}
 	}
 	
 	// Inserts a new node in the lost. The node will be inserted at the user defined location and will have the user defined value
 	void List::insert_node_at(int location_, int value_)
 	{
 		Node* newNode = new_node(value_);
-		
 	}
 	
 	// Overloaded assignment operator (=) for assigning one list to another
